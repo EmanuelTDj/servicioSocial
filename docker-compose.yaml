@@ -1,0 +1,23 @@
+on: "3.7"
+
+services:
+
+    app:
+          image: pablokbs/getting-started:v2
+                ports:
+                        - 3000:3000
+                        - 80:80
+                        - 81:81
+                        - 443:443
+                              environment:
+                                      MYSQL_HOST: mysql
+                                              MYSQL_USER: root
+                                                      MYSQL_PASSWORD: password
+                                                              MYSQL_DB: todos
+                                                                  mysql:
+                                                                        image: mysql:5.7
+                                                                              volumes:
+                                                                                      - ./todo-mysql-data:/var/lib/mysql
+                                                                                            environment:
+                                                                                                    MYSQL_ROOT_PASSWORD: password
+                                                                                                            MYSQL_DATABASE: todos
